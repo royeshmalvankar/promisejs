@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonepe</title>
+</head>
+<style>
+    #brd{
+        /* border: 2px solid blue; */
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    #ph{
+        display: flex;
+        justify-content: center;
+    }
+    #py{
+        margin-top: 30px;
+        height: 50px;
+        width: auto;
+        font-size: 20px;
+    }
+    label{
+        font-size: 40px;
+        margin-top: 35px;
+    }
+    #pay{
+        height: 50px;
+        width: 100px;
+        margin-right: 30px;
+        margin-top: 20px;
+        background-color: green;
+        border-radius: 30px;
+
+    }
+    #can{
+        height: 50px;
+        width: 100px;
+        margin-top: 20px;
+        background-color: red;
+        border-radius: 30px;
+    }
+    #bt{
+        border: 2px solid rgb(90, 0, 128);
+        border-radius: 5px;
+        height: 500px;
+        width: 400px;
+        margin-top: 50px;
+        padding-top: 13%;
+        background-color: rgb(156, 95, 247);
+    }
+    #bts{
+        /* border: 2px solid red; */
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    h1{
+        text-align: center;
+        color: rgb(90, 0, 128);
+    }
+    h2{
+        text-align: center;
+        color: black;
+    }
+</style>
+<body>
+    <div id="brd">
+        <div id="bt">
+            <h1>Phone Pe</h1>
+            <div id="ph">
+                <label for="py">₹</label>
+                <input type="number" id="py" placeholder="₹">
+            </div>
+            <div id="bts">
+                <button id="pay">Pay</button>
+                <button id="can">Cancel</button>
+            </div>
+            <div id="rj">
+
+            </div>
+        </div>       
+    </div>
+</body>
+<script>
+    let d1=document.getElementById("brd")
+    let d2=document.getElementById("bt")
+    // d1.appendChild(d2)
+    // let p1=document.createElement("h1").createTextNode("Phone Pe")
+    // let ndh1=document.createTextNode("Phone Pe")
+    // p1.appendChild(ndh1)
+    // d2.appendChild(p1)
+    let d3=document.getElementById("ph")
+    let inp=document.getElementById("py")
+    // d2.appendChild(d3)
+    // let lb=document.createElement("label").createTextNode("₹")
+    // let ndlb=document.createTextNode("₹")
+    // lb.appendChild(ndlb)
+    // let inp=document.createElement("input").placeholder="₹".setAttribute('type','number').setAttribute('id','py')
+    // d3.appendChild(lb,inp)
+    let d4=document.getElementById("bts")
+    let d5=document.getElementById("rj")
+    let btp=document.getElementById("pay")
+    let btc=document.getElementById("can")
+    btp.addEventListener('click',function(e){
+        event.preventDefault(e);
+        let pro = new Promise(function(resolve,reject)
+            { setTimeout(function (){
+                if(inp.value>0 && Boolean(Math.round(Math.random()))===true)
+                {
+                resolve(
+                val={
+                    Rs:inp.value
+                },
+                localStorage.setItem("val",JSON.stringify(val)),
+                window.location.href="./pay.html",
+                )
+            }
+                else
+                { 
+                    if(inp.value>0)
+                    {
+                    reject(
+                        val={
+                        Rs:inp.value
+                        },
+                        localStorage.setItem("val",JSON.stringify(val)),
+                        window.location.href="./can.html",
+
+                        )
+                    }
+                    else
+                    {
+                    reject(
+                        h1t=document.createElement("h2"),
+                        h1nd=document.createTextNode("Please type value greater than 0"),
+                        h1t.appendChild(h1nd),
+                        d5.appendChild(h1t)
+                    )
+                    }
+                    // document.getElementById('d5').innerHTML= ''
+                }
+                console.log(h1t);
+            },2000)  
+        }
+        )
+       
+    })
+    
+   
+ 
+    btc.addEventListener('click',function(e){
+        event.preventDefault(e);
+        let pro = new Promise(function(resolve,reject)
+            { setTimeout(function (){
+                if(inp.value>0)
+                {
+                resolve(
+                val={
+                    Rs:inp.value
+                },
+                localStorage.setItem("val",JSON.stringify(val)),
+                window.location.href="./can.html",
+                
+                )
+            }
+            else
+            { 
+                reject(
+                    h1t=document.createElement("h2"),
+                        h1nd=document.createTextNode("Please type value greater than 0"),
+                        h1t.appendChild(h1nd),
+                        d5.appendChild(h1t)
+                        )
+            }
+                
+            },2000)
+        }
+        )
+        console.log(h1t);
+    })
+
+</script>
+</html>
